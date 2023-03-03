@@ -1,0 +1,20 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Radnik</th>
+    <th>Pozicija</th>
+    <th>Datum promjene</th>
+    <th>Stari iznos</th>
+    <th>Novi iznos</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let dataItem of SalariesList">
+    <td>{{dataItem.EmployeeId}}</td>
+    <td>{{dataItem.EmployeeName}}</td>
+    <td>{{dataItem.Department}}</td>
+    <td>{{dataItem.DateOfJoining}}</td>
+  </tr>
+  </tbody>
+</table>
+

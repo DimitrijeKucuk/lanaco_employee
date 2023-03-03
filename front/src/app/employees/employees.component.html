@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Ime i prezime</th>
+    <th>Pozicija</th>
+    <th>Period pozicije</th>
+    <th>Nadređeni</th>
+    <th>Plata</th>
+    <th>Aktivni bonusi</th>
+    <th>Aktivni odbitci</th>
+    <th>Preostali dani godišnjeg</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let dataItem of EmployeeList">
+    <td>{{dataItem.EmployeeId}}</td>
+    <td>{{dataItem.EmployeeName}}</td>
+    <td>{{dataItem.Department}}</td>
+    <td>{{dataItem.DateOfJoining}}</td>
+  </tr>
+  </tbody>
+</table>
