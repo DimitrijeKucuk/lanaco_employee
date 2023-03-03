@@ -1,6 +1,7 @@
 global using Microsoft.EntityFrameworkCore;
 global using back.Data;
 global using back.Entities;
+global using back.DTOs;
 
 var builder = WebApplication.CreateBuilder(args);
 
