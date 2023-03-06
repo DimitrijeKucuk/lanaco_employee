@@ -1,0 +1,1 @@
+insert into employee.dbo.JobPosition values (1,'Fullstack Developer'),(2, 'Backend Developer'),(3,'Frontend Developer');
