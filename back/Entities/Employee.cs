@@ -24,5 +24,8 @@ namespace back.Entities
         public List<Bonus>? Bonuses { get; set; }
 
         public List<Deducation>? Deducations { get; set; }
+
+         public List<JobPosition>? PossibleEmployeePosition { get; set; }
+
     }
 }

@@ -12,5 +12,7 @@ namespace back.Entities
         public string? PositionName { get; set; }
 
         public List<EmployeePosition>? EmployeePositions { get; set; }
+
+        public List<Employee>? PossibleEmployeePosition { get; set; }
     }
 }

@@ -9,7 +9,29 @@ namespace back
     {
         public AutoMapperProfile()
         {
-            CreateMap<Employee,GetEmployeeDTO>();
+            CreateMap<Employee,GetEmployeeDTO>()
+            .ForMember(
+                dest => dest.FirstAndLastName,
+                opt => opt.MapFrom(src => src.FirstName + " " + src.LastName)
+            ).ForMember(
+                dest => dest.JobPosition,
+                opt => opt.MapFrom(src => src.EmployeePositions.MaxBy(job => job.DateFrom).JobPosition.PositionName)
+            ).ForMember(
+                dest => dest.JobPositionPeriod,
+                opt => opt.MapFrom(src => src.EmployeePositions.MaxBy(job => job.DateFrom).getPeriod())
+            ).ForMember(
+                dest => dest.BossFirstAndLastName,
+                opt => opt.MapFrom(src => src.Boss.FirstName + " " + src.Boss.LastName)
+            ).ForMember(
+                dest => dest.Salary,
+                opt => opt.MapFrom(src => src.Salaries.MaxBy(sal => sal.DateFrom).Amount)
+            ).ForMember(
+                dest => dest.ActiveBonus,
+                opt => opt.MapFrom(src => src.Bonuses.Where(bon => bon.BonusDate.Month == DateTime.Today.Month).Sum(bon => bon.Amount))
+            ).ForMember(
+                dest => dest.ActiveDeducation,
+                opt => opt.MapFrom(src => src.Deducations.Where(ded => ded.DeducationDate.Month == DateTime.Today.Month).Sum(ded => ded.Amount))
+            );
         }
     }
 }

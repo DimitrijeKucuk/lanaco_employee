@@ -2,6 +2,8 @@ global using Microsoft.EntityFrameworkCore;
 global using back.Data;
 global using back.Entities;
 global using back.DTOs;
+global using back.Services.Interfaces;
+using back.Services.Impl.EmployeeService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IEmployeeService,EmployeeService>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

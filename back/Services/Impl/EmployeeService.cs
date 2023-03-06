@@ -6,7 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using back.Services.Interfaces;
 
-namespace dotnet_rpg.Services.EmployeeService
+namespace back.Services.Impl.EmployeeService
 {
     public class EmployeeService : IEmployeeService
     {

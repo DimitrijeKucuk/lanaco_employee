@@ -16,5 +16,9 @@ namespace back.Entities
         public DateTime DateFrom { get; set; }
 
         public DateTime DateTo { get; set; }
+
+        public string getPeriod(){
+            return DateFrom + " " + DateTo;
+        }
     }
 }

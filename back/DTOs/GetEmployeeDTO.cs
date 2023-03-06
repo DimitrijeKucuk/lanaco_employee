@@ -14,5 +14,6 @@ namespace back.DTOs
         public double Salary { get; set; }
         public double ActiveBonus { get; set; }
         public double ActiveDeducation { get; set; }
-    }
+        public int VacationDays { get; set; }
+    }                                                                          
 }

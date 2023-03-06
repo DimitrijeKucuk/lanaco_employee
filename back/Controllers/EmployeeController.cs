@@ -11,17 +11,17 @@ namespace back.Controllers
     [Route("api/[controller]")]
     public class EmployeeController : ControllerBase
     {
-        private readonly IEmployeeService _characterService;
+        private readonly IEmployeeService _employeeService;
 
-        public EmployeeController(IEmployeeService characterService)
+        public EmployeeController(IEmployeeService employeeService)
         {
-            _characterService = characterService;
+            _employeeService = employeeService;
         }
 
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<List<GetEmployeeDTO>>>> Get()
         {
-            return Ok(await _characterService.GetAllEmployee());
+            return Ok(await _employeeService.GetAllEmployee());
         }
     }
 }
