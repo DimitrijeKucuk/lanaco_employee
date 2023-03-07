@@ -45,6 +45,7 @@ namespace back.Services.Impl.EmployeeService
                 var ewpp = new GetEmployeeWithPossiblePositions(){
                     EmployeeId = e.Id,
                     EmployeeFirstAndLastName = e.FirstName + " " + e.LastName,
+                    CurrentPossibleJobPositions = e.PossibleEmployeePosition,
                     JobPositions = tmp
                 };
                 ewpps.Add(ewpp);
@@ -57,7 +58,9 @@ namespace back.Services.Impl.EmployeeService
         public async Task UpdateEmployeePossiblePositionAsync(UpdateEployeePossiblePositions updateEployeePossiblePositions)
         {
             var employee = await _context.Employee.FirstOrDefaultAsync(e => e.Id == updateEployeePossiblePositions.id);
-            employee.PossibleEmployeePosition = updateEployeePossiblePositions.JobPositions;
+            employee.PossibleEmployeePosition=new List<JobPosition>();
+            await _context.SaveChangesAsync();
+            employee.PossibleEmployeePosition=updateEployeePossiblePositions.JobPositions;
             await _context.SaveChangesAsync();
         }
     }

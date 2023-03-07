@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using back.Services.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace back.Controllers
@@ -19,6 +20,7 @@ namespace back.Controllers
         }
 
         [HttpGet]
+        [EnableCors]
         public async Task<ActionResult<ServiceResponse<List<GetEmployeeDTO>>>> Get()
         {
             return Ok(await _employeeService.GetAllEmployee());
@@ -26,6 +28,7 @@ namespace back.Controllers
 
         [HttpGet]
         [Route("PossibleJobPositions")]
+        [EnableCors]
         public async Task<ActionResult<ServiceResponse<List<GetEmployeeDTO>>>> GetPossiblePositions()
         {
             return Ok(await _employeeService.GetPossiblePositions());
@@ -33,10 +36,11 @@ namespace back.Controllers
 
          [HttpPut]
          [Route("PossibleJobPositions")]
-        public async Task<ActionResult<string>> UpdateCharacter(UpdateEployeePossiblePositions updatedEmployeePossiblePosition)
+         
+        public async Task<ActionResult<string>> Update(UpdateEployeePossiblePositions updatedEmployeePossiblePosition)
         {
             await _employeeService.UpdateEmployeePossiblePositionAsync(updatedEmployeePossiblePosition);
-            return Ok("Ok");
+            return Ok();
         }
     }
 }

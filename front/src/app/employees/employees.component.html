@@ -13,10 +13,14 @@
   </thead>
   <tbody>
   <tr *ngFor="let dataItem of EmployeeList">
-    <td>{{dataItem.EmployeeId}}</td>
-    <td>{{dataItem.EmployeeName}}</td>
-    <td>{{dataItem.Department}}</td>
-    <td>{{dataItem.DateOfJoining}}</td>
+    <td>{{dataItem.firstAndLastName}}</td>
+    <td>{{dataItem.jobPosition}}</td>
+    <td>{{dataItem.jobPositionPeriod}}</td>
+    <td>{{dataItem.bossFirstAndLastName}}</td>
+    <td>{{dataItem.salary}}</td>
+    <td>{{dataItem.activeBonus}}</td>
+    <td>{{dataItem.activeDeducation}}</td>
+    <td>{{dataItem.vacationDays}}</td>
   </tr>
   </tbody>
 </table>

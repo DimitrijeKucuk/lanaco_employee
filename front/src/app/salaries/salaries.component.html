@@ -10,10 +10,11 @@
   </thead>
   <tbody>
   <tr *ngFor="let dataItem of SalariesList">
-    <td>{{dataItem.EmployeeId}}</td>
-    <td>{{dataItem.EmployeeName}}</td>
-    <td>{{dataItem.Department}}</td>
-    <td>{{dataItem.DateOfJoining}}</td>
+    <td>{{dataItem.employeeFirstAndLastName}}</td>
+    <td>{{dataItem.jobPosition}}</td>
+    <td>{{dataItem.salaryChanges.date}}</td>
+    <td>{{dataItem.salaryChanges.previousSalary}}</td>
+    <td>{{dataItem.salaryChanges.newSalary}}</td>
   </tr>
   </tbody>
 </table>
