@@ -24,7 +24,8 @@ namespace back.Services.Impl.EmployeeService
         public async Task<ServiceResponse<List<GetEmployeeDTO>>> GetAllEmployee()
         {
             var serviceResponse = new ServiceResponse<List<GetEmployeeDTO>>();
-            var dbEmployees = await _context.Employee.ToListAsync();
+            var dbEmployees = await _context.Employee.Include(e => e.EmployeePositions).ThenInclude(p => p.JobPosition)
+            .Include(e => e.Salaries).Include(e => e.Bonuses).Include(e => e.Deducations).ToListAsync();
             serviceResponse.Data = dbEmployees.Select(c => _mapper.Map<GetEmployeeDTO>(c)).ToList();
             return serviceResponse;
         }

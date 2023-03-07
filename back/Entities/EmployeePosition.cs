@@ -18,7 +18,7 @@ namespace back.Entities
         public DateTime DateTo { get; set; }
 
         public string getPeriod(){
-            return DateFrom + " " + DateTo;
+            return DateFrom.ToString("dd.MM.yyyy") + " - " + DateTo.ToString("dd.MM.yyyy");
         }
     }
 }
