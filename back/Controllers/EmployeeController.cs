@@ -30,5 +30,17 @@ namespace back.Controllers
         {
             return Ok(await _employeeService.GetPossiblePositions());
         }
+
+         [HttpPut]
+         [Route("PossibleJobPositions")]
+        public async void UpdateCharacter(UpdateEployeePossiblePositions updatedEmployeePossiblePosition)
+        {
+            var response = await _employeeService.UpdateEmployeePossiblePosition(updatedEmployeePossiblePosition);
+            if (response.Data is null)
+            {
+                return NotFound(response);
+            }
+            return Ok(response);
+        }
     }
 }

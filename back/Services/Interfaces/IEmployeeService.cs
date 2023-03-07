@@ -10,5 +10,7 @@ namespace back.Services.Interfaces
         Task<ServiceResponse<List<GetEmployeeDTO>>> GetAllEmployee();
 
         Task<ServiceResponse<List<GetEmployeeWithPossiblePositions>>> GetPossiblePositions();
+
+        void UpdateEmployeePossiblePosition(UpdateEployeePossiblePositions updateEployeePossiblePositions);
     }
 }
