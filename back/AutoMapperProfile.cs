@@ -32,6 +32,18 @@ namespace back
                 dest => dest.ActiveDeducation,
                 opt => opt.MapFrom(src => src.Deducations.Where(ded => ded.DeducationDate.Month == DateTime.Today.Month).Sum(ded => ded.Amount))
             );
+
+            CreateMap<Employee,GetSalaryChangesDTO>()
+            .ForMember(
+                dest => dest.EmployeeFirstAndLastName,
+                opt => opt.MapFrom(src => src.FirstName + " " + src.LastName)
+            ).ForMember(
+                dest => dest.JobPosition,
+                opt => opt.MapFrom(src => src.EmployeePositions.MaxBy(job => job.DateFrom).JobPosition.PositionName)
+            ).ForMember(
+                dest => dest.SalaryChanges,
+                opt => opt.MapFrom(src => src.GetSalaryChanges())
+            );
         }
     }
 }

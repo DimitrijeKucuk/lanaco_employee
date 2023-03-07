@@ -27,5 +27,25 @@ namespace back.Entities
 
          public List<JobPosition>? PossibleEmployeePosition { get; set; }
 
+         public List<SalaryChanges> GetSalaryChanges(){
+            Salaries.Sort((a,b) => a.DateFrom.CompareTo(b.DateFrom));
+
+            List<SalaryChanges> Changes = new List<SalaryChanges>();
+            for(int i=0; i<Salaries.Count; i+=2)
+            {
+                if(i != Salaries.Count - 1)
+                {
+                    SalaryChanges sc = new SalaryChanges(){
+                        date = Salaries[i].DateTo.ToString("dd.MM.yyyy"),
+                        previousSalary = Salaries[i].Amount,
+                        newSalary = Salaries[i + 1].Amount
+                    };
+                    Changes.Add(sc);
+                }
+            }
+
+            return Changes;
+         }
+
     }
 }

@@ -17,6 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IEmployeeService,EmployeeService>();
+builder.Services.AddScoped<ISalaryChangesService,SalaryChangesService>();
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
