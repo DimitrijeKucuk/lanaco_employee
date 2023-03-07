@@ -7,7 +7,8 @@ namespace back.DTOs
 {
     public class GetEmployeeWithPossiblePositions
     {
-        public Employee? Employee { get; set; }
+        public int EmployeeId { get; set; }
+        public string? EmployeeFirstAndLastName { get; set; }
         public List<JobPosition>? JobPositions { get; set; }
     }
 }

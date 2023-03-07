@@ -43,7 +43,8 @@ namespace back.Services.Impl.EmployeeService
                 tmp.RemoveAll(job => e.PossibleEmployeePosition.Contains(job));
 
                 var ewpp = new GetEmployeeWithPossiblePositions(){
-                    Employee = e,
+                    EmployeeId = e.Id,
+                    EmployeeFirstAndLastName = e.FirstName + " " + e.LastName,
                     JobPositions = tmp
                 };
                 ewpps.Add(ewpp);
@@ -51,6 +52,13 @@ namespace back.Services.Impl.EmployeeService
 
             serviceResponse.Data = ewpps;
             return serviceResponse;
+        }
+
+        public async Task UpdateEmployeePossiblePositionAsync(UpdateEployeePossiblePositions updateEployeePossiblePositions)
+        {
+            var employee = await _context.Employee.FirstOrDefaultAsync(e => e.Id == updateEployeePossiblePositions.id);
+            employee.PossibleEmployeePosition = updateEployeePossiblePositions.JobPositions;
+            await _context.SaveChangesAsync();
         }
     }
 }

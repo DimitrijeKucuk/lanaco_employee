@@ -11,6 +11,6 @@ namespace back.Services.Interfaces
 
         Task<ServiceResponse<List<GetEmployeeWithPossiblePositions>>> GetPossiblePositions();
 
-        void UpdateEmployeePossiblePosition(UpdateEployeePossiblePositions updateEployeePossiblePositions);
+        Task UpdateEmployeePossiblePositionAsync(UpdateEployeePossiblePositions updateEployeePossiblePositions);
     }
 }

@@ -33,14 +33,10 @@ namespace back.Controllers
 
          [HttpPut]
          [Route("PossibleJobPositions")]
-        public async void UpdateCharacter(UpdateEployeePossiblePositions updatedEmployeePossiblePosition)
+        public async Task<ActionResult<string>> UpdateCharacter(UpdateEployeePossiblePositions updatedEmployeePossiblePosition)
         {
-            var response = await _employeeService.UpdateEmployeePossiblePosition(updatedEmployeePossiblePosition);
-            if (response.Data is null)
-            {
-                return NotFound(response);
-            }
-            return Ok(response);
+            await _employeeService.UpdateEmployeePossiblePositionAsync(updatedEmployeePossiblePosition);
+            return Ok("Ok");
         }
     }
 }

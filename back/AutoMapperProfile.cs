@@ -44,6 +44,16 @@ namespace back
                 dest => dest.SalaryChanges,
                 opt => opt.MapFrom(src => src.GetSalaryChanges())
             );
+
+            // CreateMap<Employee,GetEmployeeWithPossiblePositions>()
+            // .ForMember(
+            //     dest => dest.EmployeeId,
+            //     opt => opt.MapFrom(src => src.Id)
+            // )
+            // .ForMember(
+            //     dest => dest.EmployeeFirstAndLastName,
+            //     opt => opt.MapFrom(src => src.FirstName + " " + src.LastName)
+            // );
         }
     }
 }
