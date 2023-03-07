@@ -9,6 +9,6 @@ namespace back.DTOs
     {
         public string? EmployeeFirstAndLastName { get; set; }
         public string? JobPosition { get; set; }
-        public SalaryChanges SalaryChanges { get; set; }
+        public SalaryChanges? SalaryChanges { get; set; }
     }                                                                          
 }

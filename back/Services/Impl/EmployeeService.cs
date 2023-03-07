@@ -30,5 +30,27 @@ namespace back.Services.Impl.EmployeeService
             return serviceResponse;
         }
 
+        public async Task<ServiceResponse<List<GetEmployeeWithPossiblePositions>>> GetPossiblePositions()
+        {
+            var serviceResponse = new ServiceResponse<List<GetEmployeeWithPossiblePositions>>();
+            var dbEmployees = await _context.Employee.Include(e => e.PossibleEmployeePosition).ToListAsync();
+            var dbPositions = await _context.JobPosition.ToListAsync();
+
+            var ewpps = new List<GetEmployeeWithPossiblePositions>();
+            foreach(Employee e in dbEmployees)
+            {
+                List<JobPosition> tmp = new List<JobPosition>(dbPositions);
+                tmp.RemoveAll(job => e.PossibleEmployeePosition.Contains(job));
+
+                var ewpp = new GetEmployeeWithPossiblePositions(){
+                    Employee = e,
+                    JobPositions = tmp
+                };
+                ewpps.Add(ewpp);
+            }
+
+            serviceResponse.Data = ewpps;
+            return serviceResponse;
+        }
     }
 }

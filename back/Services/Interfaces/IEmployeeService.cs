@@ -8,5 +8,7 @@ namespace back.Services.Interfaces
     public interface IEmployeeService
     {
         Task<ServiceResponse<List<GetEmployeeDTO>>> GetAllEmployee();
+
+        Task<ServiceResponse<List<GetEmployeeWithPossiblePositions>>> GetPossiblePositions();
     }
 }

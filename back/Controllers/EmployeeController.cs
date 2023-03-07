@@ -23,5 +23,12 @@ namespace back.Controllers
         {
             return Ok(await _employeeService.GetAllEmployee());
         }
+
+        [HttpGet]
+        [Route("PossibleJobPositions")]
+        public async Task<ActionResult<ServiceResponse<List<GetEmployeeDTO>>>> GetPossiblePositions()
+        {
+            return Ok(await _employeeService.GetPossiblePositions());
+        }
     }
 }
