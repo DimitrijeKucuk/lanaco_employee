@@ -12,5 +12,7 @@ namespace back.Services.Interfaces
         Task<ServiceResponse<List<GetEmployeeWithPossiblePositions>>> GetPossiblePositions();
 
         Task UpdateEmployeePossiblePositionAsync(UpdateEployeePossiblePositions updateEployeePossiblePositions);
+
+        Task RemoveEmployeePossiblePositionAsync(UpdateEployeePossiblePositions updateEployeePossiblePositions);
     }
 }

@@ -8,6 +8,6 @@ namespace back.DTOs
     public class UpdateEployeePossiblePositions
     {
         public int id { get; set; }
-        public List<JobPosition>? JobPositions { get; set; }
+        public JobPosition? JobPosition { get; set; }
     }
 }

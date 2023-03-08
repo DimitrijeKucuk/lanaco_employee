@@ -57,10 +57,15 @@ namespace back.Services.Impl.EmployeeService
 
         public async Task UpdateEmployeePossiblePositionAsync(UpdateEployeePossiblePositions updateEployeePossiblePositions)
         {
-            var employee = await _context.Employee.FirstOrDefaultAsync(e => e.Id == updateEployeePossiblePositions.id);
-            employee.PossibleEmployeePosition=new List<JobPosition>();
+            var employee = await _context.Employee.Include(e => e.PossibleEmployeePosition).FirstOrDefaultAsync(e => e.Id == updateEployeePossiblePositions.id);
+            employee.PossibleEmployeePosition.Add(updateEployeePossiblePositions.JobPosition);
             await _context.SaveChangesAsync();
-            employee.PossibleEmployeePosition=updateEployeePossiblePositions.JobPositions;
+        }
+        
+        public async Task RemoveEmployeePossiblePositionAsync(UpdateEployeePossiblePositions updateEployeePossiblePositions)
+        {
+            var employee = await _context.Employee.Include(e => e.PossibleEmployeePosition).FirstOrDefaultAsync(e => e.Id == updateEployeePossiblePositions.id);
+            employee.PossibleEmployeePosition.Remove(updateEployeePossiblePositions.JobPosition);
             await _context.SaveChangesAsync();
         }
     }
