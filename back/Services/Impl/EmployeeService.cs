@@ -65,7 +65,7 @@ namespace back.Services.Impl.EmployeeService
         public async Task RemoveEmployeePossiblePositionAsync(UpdateEployeePossiblePositions updateEployeePossiblePositions)
         {
             var employee = await _context.Employee.Include(e => e.PossibleEmployeePosition).FirstOrDefaultAsync(e => e.Id == updateEployeePossiblePositions.id);
-            employee.PossibleEmployeePosition.Remove(updateEployeePossiblePositions.JobPosition);
+            employee.PossibleEmployeePosition.Remove(employee.PossibleEmployeePosition.First(pos => pos.Id == updateEployeePossiblePositions.JobPosition.Id));
             await _context.SaveChangesAsync();
         }
     }

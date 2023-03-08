@@ -42,8 +42,8 @@ namespace back.Controllers
             return Ok();
         }
 
-        [HttpDelete]
-        [Route("PossibleJobPositions")]
+        [HttpPut]
+        [Route("PossibleJobPositionsDelete")]
         public async Task<ActionResult<string>> Delete(UpdateEployeePossiblePositions updatedEmployeePossiblePosition)
         {
             await _employeeService.RemoveEmployeePossiblePositionAsync(updatedEmployeePossiblePosition);

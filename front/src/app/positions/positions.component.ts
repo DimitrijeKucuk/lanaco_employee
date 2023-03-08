@@ -42,8 +42,17 @@ export class PositionsComponent {
     this.selectedEmployee.jobPositions.forEach((value: { id: any; }, index: any)=>{
       if(value.id==this.selectedPosition.id) this.selectedEmployee.jobPositions.splice(index,1);
     });
-    this.http.put('Employee/PossibleJobPositions', {id:this.selectedEmployee.employeeId,JobPositions:this.selectedEmployee.currentPossibleJobPositions})
+    this.http.put('Employee/PossibleJobPositions', {id:this.selectedEmployee.employeeId,JobPosition:this.selectedPosition})
       .subscribe(data => {})
     this.selectedPosition = this.PositionsList[0].jobPositions[0];
+  }
+
+  deletePosition(dataItem: any) {
+    this.selectedEmployee.currentPossibleJobPositions.forEach((value: { id: any; }, index: any)=>{
+      if(value.id==dataItem.id) this.selectedEmployee.currentPossibleJobPositions.splice(index,1);
+    });
+    this.selectedEmployee.jobPositions.push(dataItem)
+    this.http.put('Employee/PossibleJobPositionsDelete', {id:this.selectedEmployee.employeeId,JobPosition:dataItem})
+      .subscribe(data => {})
   }
 }
